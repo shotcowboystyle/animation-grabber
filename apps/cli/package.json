@@ -1,0 +1,53 @@
+{
+  "name": "animation-grabber",
+  "version": "0.2.0",
+  "description": "Grab GSAP tweens, timelines and ScrollTriggers from any Webflow page as runnable code. Built for AI coding agents.",
+  "keywords": [
+    "ai",
+    "animation",
+    "claude",
+    "cli",
+    "gsap",
+    "scrolltrigger",
+    "webflow"
+  ],
+  "homepage": "https://github.com/shotcowboystyle/animation-grabber/tree/main/apps/cli",
+  "bugs": {
+    "url": "https://github.com/shotcowboystyle/animation-grabber/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shotcowboystyle/animation-grabber.git",
+    "directory": "apps/cli"
+  },
+  "bin": {
+    "animation-grabber": "./dist/cli.mjs"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "start": "node dist/cli.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "playwright": "^1.64.0"
+  },
+  "devDependencies": {
+    "@animation-grabber/core": "workspace:*",
+    "@types/node": "^26.1.1",
+    "tsdown": "^0.23.0",
+    "typescript": "^7.0.2",
+    "vitest": "5.0.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

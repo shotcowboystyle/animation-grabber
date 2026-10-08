@@ -1,0 +1,125 @@
+:root {
+  --sunshine: #ffd43b;
+  --indigo: #1e1b4b;
+  --bubblegum: #ff4f93;
+  --electric: #4c6fff;
+  --ink: var(--indigo);
+  --paper: #fffdf5;
+  --paper-2: #fff4c2;
+  --line: color-mix(in srgb, var(--indigo) 18%, transparent);
+  color-scheme: light dark;
+  font-family: Figtree, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f5f3ff;
+    --paper: var(--indigo);
+    --paper-2: #2a2666;
+    --line: color-mix(in srgb, white 18%, transparent);
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 520px;
+  max-width: 640px;
+}
+
+main {
+  padding: 12px 14px 14px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  line-height: 0;
+}
+
+.logo {
+  height: 28px;
+  width: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.hint,
+.status {
+  color: color-mix(in srgb, currentcolor 70%, transparent);
+  margin: 0 0 10px;
+}
+
+.actions,
+.tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tabs .spacer {
+  flex: 1;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--paper-2);
+  color: inherit;
+  cursor: pointer;
+}
+
+.actions button:first-child {
+  background: var(--sunshine);
+  border-color: var(--indigo);
+  color: var(--indigo);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button[aria-pressed="true"] {
+  background: var(--bubblegum);
+  border-color: var(--bubblegum);
+  color: white;
+}
+
+.summary p {
+  margin: 0 0 4px;
+}
+
+.warning,
+.error {
+  color: var(--bubblegum);
+  margin: 0 0 8px;
+}
+
+pre {
+  margin: 0;
+  max-height: 420px;
+  overflow: auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: color-mix(in srgb, var(--indigo) 6%, transparent);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre {
+    background: color-mix(in srgb, black 25%, transparent);
+  }
+}

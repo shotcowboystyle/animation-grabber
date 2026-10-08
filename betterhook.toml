@@ -74,7 +74,8 @@ writes = []
 concurrent_safe = true
 
 [hooks.pre-commit.jobs.secrets]
-run = "betterleaks dir --no-banner --redact {staged_files}"
+# Scans the tree, not {staged_files}: deleted staged paths would fail stat.
+run = "betterleaks dir . --no-banner --redact"
 reads = ["**/*"]
 writes = []
 concurrent_safe = true
@@ -95,7 +96,7 @@ writes = ["coverage/**"]
 concurrent_safe = true
 
 [hooks.pre-push.jobs.dead-code]
-run = "fallow dead-code"
+run = "pnpm dead-code"
 reads = ["**/*"]
 writes = []
 concurrent_safe = true

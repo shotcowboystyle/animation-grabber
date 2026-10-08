@@ -33,17 +33,19 @@ jobs:
       - name: Quality gates
         run: pnpm check
 
-      - name: Build (Chrome + Firefox)
+      - name: Build (extension, CLI, web)
         run: pnpm turbo run build build:firefox
 
       - name: web-ext lint
-        run: pnpm lint:webext
+        run: pnpm turbo run lint:webext
 
       - name: React Doctor
-        run: pnpm react-doctor
+        run: pnpm --filter @animation-grabber/extension react-doctor
 
       - uses: actions/upload-artifact@v4
         with:
           name: extension-builds
-          path: .output/
+          path: apps/extension/.output/
+          # .output is a dot-directory; v4 skips hidden paths by default.
+          include-hidden-files: true
           if-no-files-found: error
