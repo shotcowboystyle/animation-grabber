@@ -14,7 +14,10 @@ export default defineConfig({
     {
       // Serialized with Function.prototype.toString for scripting.executeScript,
       // so every helper must stay nested inside the exported function.
-      files: ["src/lib/extract-in-page.ts"],
+      files: [
+        "packages/core/src/extract-in-page.ts",
+        "packages/core/src/record-in-page.ts",
+      ],
       rules: { "unicorn/consistent-function-scoping": "off" },
     },
   ],

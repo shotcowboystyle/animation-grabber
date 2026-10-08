@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Animation Grabber — Grab GSAP animations from any Webflow page
+    </title>
+    <meta
+      name="description"
+      content="Point at any Webflow page and get its GSAP tweens, timelines and ScrollTriggers back as runnable code. Chrome extension, CLI and agent skill. Runs locally."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="Animation Grabber" />
+    <meta
+      property="og:description"
+      content="Point at any Webflow page. Get its GSAP back as runnable code."
+    />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="nav-logo" href="#top" aria-label="Animation Grabber home">
+        <img
+          src="/brand/ag-horizontal-primary.svg"
+          alt="Animation Grabber"
+          width="200"
+          height="36"
+        />
+      </a>
+      <nav aria-label="Primary">
+        <a href="#extension">Extension</a>
+        <a href="#cli">CLI</a>
+        <a href="#skill">Skill</a>
+        <a
+          class="button button-ghost"
+          href="https://github.com/shotcowboystyle/animation-grabber"
+          rel="noopener"
+          target="_blank"
+          >Star on GitHub</a
+        >
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <img
+          class="hero-symbol"
+          src="/brand/ag-symbol-primary.svg"
+          alt=""
+          width="172"
+          height="230"
+        />
+        <h1>Point at any Webflow page.<br />Get its GSAP back.</h1>
+        <p class="lede">
+          Animation Grabber pulls the live GSAP tweens, timelines and
+          ScrollTriggers out of a page and hands them to you, or your coding
+          agent, as runnable code.
+        </p>
+        <div class="cta">
+          <a
+            class="button button-primary"
+            href="https://github.com/shotcowboystyle/animation-grabber/releases"
+            rel="noopener"
+            target="_blank"
+            >Add to Chrome</a
+          >
+          <a class="button button-ghost" href="#cli">Try the CLI</a>
+        </div>
+        <pre class="hero-code"><code>gsap.registerPlugin(ScrollTrigger);
+
+const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+intro.from(".hero-heading", { y: 40, opacity: 0, duration: 0.8 }, 0);
+intro.from(".hero-lede", { y: 24, opacity: 0, duration: 0.6 }, 0.2);
+
+gsap.to(".feature-card", {
+  y: 0, opacity: 1, stagger: 0.1,
+  scrollTrigger: { trigger: ".features", start: "top 80%" }
+});</code></pre>
+      </section>
+
+      <section class="features" aria-labelledby="why">
+        <h2 id="why">Why your agent needs this</h2>
+        <ul class="grid">
+          <li>
+            <h3>Live state, not source</h3>
+            <p>
+              Reads <code>gsap.globalTimeline</code> and
+              <code>ScrollTrigger.getAll()</code> at runtime. Real durations,
+              eases, positions and targets, not a guess from minified bundles.
+            </p>
+          </li>
+          <li>
+            <h3>Runnable code</h3>
+            <p>
+              Rebuilds <code>gsap.to / from / fromTo / set</code>, timelines
+              with labels and positions, inline
+              <code>scrollTrigger</code> configs and
+              <code>ScrollTrigger.create</code> calls.
+            </p>
+          </li>
+          <li>
+            <h3>Three ways to grab</h3>
+            <p>
+              Chrome extension for point-and-click, a CLI for scripts and CI,
+              and an agent skill for one-slash-command handoffs.
+            </p>
+          </li>
+          <li>
+            <h3>Catches intro animations</h3>
+            <p>
+              GSAP forgets finished tweens. Reload &amp; record flips
+              <code>autoRemoveChildren</code> before the first frame so
+              load-time animations survive.
+            </p>
+          </li>
+          <li>
+            <h3>Local only</h3>
+            <p>
+              Everything runs in your browser or on your machine. No server, no
+              account, no data leaves your device.
+            </p>
+          </li>
+          <li>
+            <h3>Structured for agents</h3>
+            <p>
+              JSON with CSS selectors, serialized <code>vars</code>,
+              parent-child timeline structure and trigger links an agent can
+              parse without ambiguity.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="product" id="extension" aria-labelledby="extension-title">
+        <div class="product-copy">
+          <p class="eyebrow">Chrome extension</p>
+          <h2 id="extension-title">Open, grab, paste.</h2>
+          <p>
+            Works on any Webflow page that exposes <code>window.gsap</code>.
+            Needs only <code>activeTab</code>; host access is requested per
+            site, only when you record.
+          </p>
+          <a
+            class="button button-primary"
+            href="https://github.com/shotcowboystyle/animation-grabber/releases"
+            rel="noopener"
+            target="_blank"
+            >Add to Chrome</a
+          >
+        </div>
+        <ol class="steps">
+          <li>
+            <strong>Extract</strong>
+            <span
+              >Click the toolbar icon on a live page. Tweens, timelines and
+              ScrollTriggers are listed instantly.</span
+            >
+          </li>
+          <li>
+            <strong>Reload &amp; record</strong>
+            <span
+              >Missing the intro? Record reloads the page with a recorder
+              attached so load-time animations are kept.</span
+            >
+          </li>
+          <li>
+            <strong>Copy</strong>
+            <span
+              >Switch between Code, JSON and the page's own GSAP source
+              snippets. Copy or download.</span
+            >
+          </li>
+        </ol>
+      </section>
+
+      <section class="product" id="cli" aria-labelledby="cli-title">
+        <div class="product-copy">
+          <p class="eyebrow">CLI</p>
+          <h2 id="cli-title">URL in, GSAP out.</h2>
+          <p>
+            Runs a headless Chromium with the recorder attached from the first
+            byte, then prints code, JSON or source snippets to stdout.
+          </p>
+          <a
+            class="button button-ghost"
+            href="https://www.npmjs.com/package/animation-grabber"
+            rel="noopener"
+            target="_blank"
+            >View on npm</a
+          >
+        </div>
+        <div class="commands">
+          <div class="command">
+            <span class="command-label">Run directly</span>
+            <pre><code>npx animation-grabber https://example.webflow.io</code></pre>
+            <button
+              class="copy"
+              type="button"
+              data-copy="npx animation-grabber https://example.webflow.io"
+            >
+              Copy
+            </button>
+          </div>
+          <div class="command">
+            <span class="command-label">Install globally</span>
+            <pre><code>npm i -g animation-grabber</code></pre>
+            <button
+              class="copy"
+              type="button"
+              data-copy="npm i -g animation-grabber"
+            >
+              Copy
+            </button>
+          </div>
+          <div class="command">
+            <span class="command-label">JSON for your agent</span>
+            <pre><code>animation-grabber https://example.webflow.io --format json -o anim.json</code></pre>
+            <button
+              class="copy"
+              type="button"
+              data-copy="animation-grabber https://example.webflow.io --format json -o anim.json"
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="product" id="skill" aria-labelledby="skill-title">
+        <div class="product-copy">
+          <p class="eyebrow">Agent skill</p>
+          <h2 id="skill-title">One slash command.</h2>
+          <p>
+            Give Claude Code (or any agent that reads <code>SKILL.md</code>) a
+            URL. It grabs the animations and rebuilds them in your project.
+          </p>
+          <a
+            class="button button-ghost"
+            href="https://github.com/shotcowboystyle/animation-grabber/tree/main/skills/animation-grabber"
+            rel="noopener"
+            target="_blank"
+            >View the skill</a
+          >
+        </div>
+        <div class="commands">
+          <div class="command">
+            <span class="command-label">Install</span>
+            <pre><code>npx skills add shotcowboystyle/animation-grabber</code></pre>
+            <button
+              class="copy"
+              type="button"
+              data-copy="npx skills add shotcowboystyle/animation-grabber"
+            >
+              Copy
+            </button>
+          </div>
+          <div class="command">
+            <span class="command-label">Use</span>
+            <pre><code>/animation-grabber https://example.webflow.io</code></pre>
+            <button
+              class="copy"
+              type="button"
+              data-copy="/animation-grabber https://example.webflow.io"
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="privacy" id="privacy" aria-labelledby="privacy-title">
+        <h2 id="privacy-title">Privacy</h2>
+        <p>
+          Animation Grabber runs entirely on your device. The extension reads
+          the current tab only when you click Extract, asks for access to a site
+          only when you choose Reload &amp; record, and never sends page
+          content, URLs or usage data anywhere. The CLI and skill do the same
+          from your machine.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <a href="#privacy">Privacy</a>
+        <a
+          href="https://github.com/shotcowboystyle/animation-grabber/issues"
+          rel="noopener"
+          target="_blank"
+          >Support</a
+        >
+        <a
+          href="https://github.com/shotcowboystyle/animation-grabber/blob/main/LICENSE"
+          rel="noopener"
+          target="_blank"
+          >MIT</a
+        >
+      </div>
+      <p>
+        Crafted by
+        <a
+          href="https://github.com/shotcowboystyle"
+          rel="noopener"
+          target="_blank"
+          >shotcowboystyle</a
+        >
+        · v0.2.0 · not affiliated with Webflow or GreenSock
+      </p>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

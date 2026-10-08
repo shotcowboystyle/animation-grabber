@@ -7,5 +7,12 @@
     // Inline HTML is used for small layout details.
     "MD033": false,
   },
-  "ignores": ["node_modules", ".output", ".wxt", "coverage", "AGENTS.md"],
+  "ignores": [
+    "**/node_modules",
+    "**/.output",
+    "**/.wxt",
+    "**/coverage",
+    "**/dist",
+    "AGENTS.md",
+  ],
 }

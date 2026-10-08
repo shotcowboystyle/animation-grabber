@@ -1,18 +1,29 @@
 {
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
   // WXT discovers entrypoints by file name; the popup is an HTML entry.
+  // Self-contained in-page functions are serialized, never imported by name.
   "entry": [
-    "entrypoints/**/*.{ts,tsx}",
-    "entrypoints/popup/index.html",
-    "wxt.config.ts",
-    "vitest.config.ts",
+    "apps/extension/entrypoints/**/*.{ts,tsx}",
+    "apps/extension/entrypoints/popup/index.html",
+    "apps/extension/wxt.config.ts",
+    "apps/extension/doctor.config.ts",
+    "apps/cli/src/cli.ts",
+    "apps/cli/tsdown.config.ts",
+    "apps/web/index.html",
+    "apps/web/main.js",
+    "**/vitest.config.ts",
+    "**/vitest.setup.ts",
+    "**/*.test.ts",
     "oxlint.config.ts",
     "oxfmt.config.ts",
-    "doctor.config.ts",
-    "src/**/*.test.ts",
-    "vitest.setup.ts",
   ],
-  "ignorePatterns": ["node_modules/**", ".output/**", ".wxt/**", "coverage/**"],
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/.output/**",
+    "**/.wxt/**",
+    "**/coverage/**",
+    "**/dist/**",
+  ],
   "ignoreDependencies": [
     // Invoked through CLI scripts / ultracite presets, not imported.
     "@vitest/coverage-v8",
@@ -28,6 +39,8 @@
     "typescript",
     "ultracite",
     "web-ext",
+    "vite",
+    "@types/node",
     "@types/react",
     "@types/react-dom",
   ],
