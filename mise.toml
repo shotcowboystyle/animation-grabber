@@ -1,0 +1,22 @@
+# Toolchain for this repo. `mise install` provisions everything below;
+# JS tooling (oxlint, oxfmt, cspell, turbo, vitest, wxt, web-ext) is a
+# devDependency and runs through pnpm.
+[tools]
+node = "26"
+pnpm = "12"
+cargo-binstall = "latest"
+"cargo:betterhook-cli" = "0.1.0"
+"npm:fallow" = "3.28.0"
+betterleaks = "1.8.1"
+actionlint = "1.7.12"
+shellcheck = "0.11.0" # actionlint shells out to it for `run:` steps
+yamllint = "1.38.0"
+markdownlint-cli2 = "0.22.1"
+
+[tasks.setup]
+description = "Install tools, dependencies, and git hooks"
+run = ["pnpm install", "betterhook install"]
+
+[tasks.check]
+description = "Run every quality gate through turbo"
+run = "pnpm check"

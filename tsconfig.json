@@ -1,0 +1,12 @@
+{
+  "extends": "./.wxt/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "types": ["vitest/globals"],
+    "jsx": "react-jsx"
+  },
+  "exclude": ["node_modules", ".output", ".wxt/types", "coverage"]
+}

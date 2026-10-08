@@ -1,0 +1,15 @@
+# betterleaks (gitleaks-compatible) configuration.
+title = "gsap-animation-extractor"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Generated or vendored files that never hold secrets"
+paths = [
+  '''pnpm-lock\.yaml''',
+  '''\.output/''',
+  '''\.wxt/''',
+  '''node_modules/''',
+  '''coverage/''',
+]

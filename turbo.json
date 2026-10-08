@@ -1,0 +1,33 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalPassThroughEnv": ["XDG_*", "MISE_*"],
+  "tasks": {
+    "build": {
+      "outputs": [".output/chrome-mv3/**"]
+    },
+    "build:firefox": {
+      "outputs": [".output/firefox-mv3/**"]
+    },
+    "dead-code": {},
+    "format": {},
+    "lint": {},
+    "lint:actions": {
+      "inputs": [".github/workflows/**"]
+    },
+    "lint:md": {
+      "inputs": ["**/*.md", ".markdownlint-cli2.jsonc"]
+    },
+    "lint:webext": {
+      "dependsOn": ["build:firefox"]
+    },
+    "lint:yaml": {
+      "inputs": ["**/*.{yml,yaml}", ".yamllint.yaml"]
+    },
+    "secrets": {},
+    "spell": {},
+    "test": {
+      "outputs": ["coverage/**"]
+    },
+    "typecheck": {}
+  }
+}

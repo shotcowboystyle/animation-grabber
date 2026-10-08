@@ -1,0 +1,101 @@
+# betterhook config — https://github.com/leonardomso/betterhook
+# Install with `betterhook install` (or `mise run setup`).
+
+[meta]
+version = 1
+
+[hooks.pre-commit]
+parallel = true
+
+[hooks.pre-commit.jobs.format]
+run = "pnpm exec oxfmt --check {staged_files}"
+fix = "pnpm exec oxfmt {files}"
+glob = [
+  "*.ts",
+  "*.tsx",
+  "*.js",
+  "*.mjs",
+  "*.json",
+  "*.jsonc",
+  "*.css",
+  "*.html",
+  "*.md",
+  "*.yml",
+  "*.yaml",
+]
+reads = ["**/*"]
+writes = []
+concurrent_safe = true
+
+[hooks.pre-commit.jobs.lint]
+run = "pnpm exec oxlint {staged_files}"
+fix = "pnpm exec oxlint --fix {files}"
+glob = ["*.ts", "*.tsx", "*.js", "*.mjs"]
+reads = ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.mjs", "oxlint.config.ts"]
+writes = []
+concurrent_safe = true
+
+[hooks.pre-commit.jobs.spell]
+run = "pnpm exec cspell --no-progress {staged_files}"
+glob = [
+  "*.ts",
+  "*.tsx",
+  "*.md",
+  "*.json",
+  "*.jsonc",
+  "*.yml",
+  "*.yaml",
+  "*.toml",
+]
+reads = ["**/*", "cspell.json"]
+writes = []
+concurrent_safe = true
+
+[hooks.pre-commit.jobs.markdown]
+run = "markdownlint-cli2 {staged_files}"
+fix = "markdownlint-cli2 --fix {files}"
+glob = ["*.md"]
+reads = ["**/*.md", ".markdownlint-cli2.jsonc"]
+writes = []
+concurrent_safe = true
+
+[hooks.pre-commit.jobs.yaml]
+run = "yamllint -s {staged_files}"
+glob = ["*.yml", "*.yaml"]
+reads = ["**/*.yml", "**/*.yaml", ".yamllint.yaml"]
+writes = []
+concurrent_safe = true
+
+[hooks.pre-commit.jobs.actions]
+run = "actionlint {staged_files}"
+glob = [".github/workflows/*.yml", ".github/workflows/*.yaml"]
+reads = [".github/workflows/**"]
+writes = []
+concurrent_safe = true
+
+[hooks.pre-commit.jobs.secrets]
+run = "betterleaks dir --no-banner --redact {staged_files}"
+reads = ["**/*"]
+writes = []
+concurrent_safe = true
+
+[hooks.pre-push]
+parallel = true
+
+[hooks.pre-push.jobs.typecheck]
+run = "pnpm typecheck"
+reads = ["**/*.ts", "**/*.tsx", "tsconfig.json"]
+writes = []
+concurrent_safe = true
+
+[hooks.pre-push.jobs.test]
+run = "pnpm test"
+reads = ["**/*.ts", "**/*.tsx", "vitest.config.ts"]
+writes = ["coverage/**"]
+concurrent_safe = true
+
+[hooks.pre-push.jobs.dead-code]
+run = "fallow dead-code"
+reads = ["**/*"]
+writes = []
+concurrent_safe = true

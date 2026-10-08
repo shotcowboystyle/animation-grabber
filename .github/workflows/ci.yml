@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install toolchain (mise)
+        uses: jdx/mise-action@v2
+        with:
+          install: true
+          cache: true
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Quality gates
+        run: pnpm check
+
+      - name: Build (Chrome + Firefox)
+        run: pnpm turbo run build build:firefox
+
+      - name: web-ext lint
+        run: pnpm lint:webext
+
+      - name: React Doctor
+        run: pnpm react-doctor
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extension-builds
+          path: .output/
+          if-no-files-found: error

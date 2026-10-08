@@ -1,0 +1,11 @@
+{
+  "globs": ["**/*.md"],
+  "config": {
+    "default": true,
+    // Long lines are fine in prose and tables.
+    "MD013": false,
+    // Inline HTML is used for small layout details.
+    "MD033": false,
+  },
+  "ignores": ["node_modules", ".output", ".wxt", "coverage", "AGENTS.md"],
+}

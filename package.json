@@ -1,0 +1,62 @@
+{
+  "name": "gsap-animation-extractor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser extension that extracts GSAP animations from Webflow landing pages",
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox",
+    "postinstall": "wxt prepare",
+    "typecheck": "tsc --noEmit",
+    "lint": "ultracite check",
+    "lint:fix": "ultracite fix",
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dead-code": "fallow dead-code",
+    "react-doctor": "react-doctor . --verbose",
+    "spell": "cspell --no-progress \"**\"",
+    "lint:md": "markdownlint-cli2",
+    "lint:yaml": "yamllint -s .",
+    "lint:actions": "actionlint",
+    "lint:webext": "web-ext lint --source-dir .output/firefox-mv3",
+    "secrets": "betterleaks dir . --no-banner --redact",
+    "check": "turbo run typecheck lint format test dead-code spell lint:md lint:yaml lint:actions secrets",
+    "fix": "ultracite fix"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitest/coverage-v8": "^5.0.3",
+    "@wxt-dev/module-react": "1.2.2",
+    "cspell": "10.3.6",
+    "eslint-plugin-github": "6.1.2",
+    "eslint-plugin-sonarjs": "^4.2.2",
+    "gsap": "3.15.0",
+    "jsdom": "^30.1.2",
+    "oxfmt": "latest",
+    "oxlint": "latest",
+    "oxlint-plugin-react-doctor": "^0.9.16",
+    "react-doctor": "0.9.17",
+    "turbo": "2.11.7",
+    "typescript": "^7.0.2",
+    "ultracite": "7.12.4",
+    "vitest": "5.0.3",
+    "web-ext": "10.7.0",
+    "wxt": "0.21.4"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@12.5.1"
+}

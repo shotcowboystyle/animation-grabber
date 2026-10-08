@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+  // WXT discovers entrypoints by file name; the popup is an HTML entry.
+  "entry": [
+    "entrypoints/**/*.{ts,tsx}",
+    "entrypoints/popup/index.html",
+    "wxt.config.ts",
+    "vitest.config.ts",
+    "oxlint.config.ts",
+    "oxfmt.config.ts",
+    "doctor.config.ts",
+    "src/**/*.test.ts",
+    "vitest.setup.ts",
+  ],
+  "ignorePatterns": ["node_modules/**", ".output/**", ".wxt/**", "coverage/**"],
+  "ignoreDependencies": [
+    // Invoked through CLI scripts / ultracite presets, not imported.
+    "@vitest/coverage-v8",
+    "cspell",
+    "eslint-plugin-github",
+    "eslint-plugin-sonarjs",
+    "jsdom",
+    "oxfmt",
+    "oxlint",
+    "oxlint-plugin-react-doctor",
+    "react-doctor",
+    "turbo",
+    "typescript",
+    "ultracite",
+    "web-ext",
+    "@types/react",
+    "@types/react-dom",
+  ],
+  "duplicates": {
+    "minOccurrences": 3,
+  },
+  "rules": {},
+}

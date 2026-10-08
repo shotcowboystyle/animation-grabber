@@ -1,0 +1,12 @@
+node_modules/
+.output/
+.wxt/
+.turbo/
+.fallow/
+coverage/
+*.log
+.DS_Store
+.env
+.env.*
+stats.html
+web-ext-artifacts/
