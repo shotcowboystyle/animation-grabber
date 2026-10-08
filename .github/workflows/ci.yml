@@ -46,4 +46,6 @@ jobs:
         with:
           name: extension-builds
           path: apps/extension/.output/
+          # .output is a dot-directory; v4 skips hidden paths by default.
+          include-hidden-files: true
           if-no-files-found: error
