@@ -1,5 +1,5 @@
 # betterleaks (gitleaks-compatible) configuration.
-title = "gsap-animation-extractor"
+title = "animation-grabber"
 
 [extend]
 useDefault = true

@@ -1,5 +1,5 @@
 {
-  "name": "gsap-animation-extractor",
+  "name": "animation-grabber",
   "version": "0.1.0",
   "private": true,
   "description": "Browser extension that extracts GSAP animations from Webflow landing pages",
