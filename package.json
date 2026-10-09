@@ -20,9 +20,12 @@
     "lint:actions": "actionlint",
     "secrets": "betterleaks dir . --no-banner --redact",
     "check": "turbo run typecheck test //#lint //#format //#dead-code //#spell //#lint:md //#lint:yaml //#lint:actions //#secrets",
-    "fix": "ultracite fix"
+    "fix": "ultracite fix",
+    "changeset": "changeset"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
     "cspell": "10.3.6",
     "eslint-plugin-github": "6.1.2",
     "eslint-plugin-sonarjs": "^4.2.2",

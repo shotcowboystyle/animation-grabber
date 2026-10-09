@@ -1,0 +1,64 @@
+name: Release
+
+# On every push to main, changesets either opens/updates the "Version Packages"
+# PR (pending changesets) or, once that PR is merged, publishes the CLI to npm.
+# npm auth is trusted publishing (OIDC): no NPM_TOKEN secret is stored.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Version or publish
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      # push release tags, create GitHub releases
+      contents: write
+      # open the Version Packages PR
+      pull-requests: write
+      # OIDC for npm trusted publishing + provenance
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install toolchain (mise)
+        uses: jdx/mise-action@v2
+        with:
+          install: true
+          cache: true
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create or update Version Packages PR
+        id: changesets
+        uses: changesets/action@v2
+        with:
+          version-script: pnpm changeset version
+          pr-title: "chore: release"
+          commit-message: "chore: release"
+        env:
+          # changelog-github reads PR/author info
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build CLI
+        if: steps.changesets.outputs.has-changesets == 'false'
+        run: pnpm turbo run build --filter animation-grabber
+
+      - name: Smoke test bin
+        if: steps.changesets.outputs.has-changesets == 'false'
+        run: node apps/cli/dist/cli.mjs --help
+
+      - name: Publish to npm
+        if: steps.changesets.outputs.has-changesets == 'false'
+        run: scripts/publish-cli.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
