@@ -2,7 +2,7 @@
   "name": "@animation-grabber/extension",
   "version": "0.2.0",
   "private": true,
-  "description": "Browser extension that grabs GSAP animations from Webflow pages",
+  "description": "Browser extension that grabs GSAP animations from any page that uses GSAP",
   "type": "module",
   "scripts": {
     "dev": "wxt",

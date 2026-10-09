@@ -23,7 +23,7 @@ export default defineConfig({
           }
         : undefined,
     description:
-      "Grab GSAP tweens, timelines and ScrollTriggers from any Webflow page as runnable code.",
+      "Grab GSAP tweens, timelines and ScrollTriggers from any page that uses GSAP, as runnable code.",
     name: "Animation Grabber",
     // Firefox declares optional host access under optional_permissions.
     optional_host_permissions: browser === "firefox" ? undefined : HOSTS,

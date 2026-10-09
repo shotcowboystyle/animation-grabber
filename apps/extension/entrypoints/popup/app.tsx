@@ -57,19 +57,30 @@ const download = (name: string, content: string) => {
 const describeError = (error: unknown) =>
   error instanceof Error ? error.message : String(error);
 
+const SCRIPTS_ONLY = VIEWS.filter((item) => item.value === "scripts");
+
+/** Scripts that call GSAP or load it: a sign GSAP is bundled privately. */
+const hasScriptHits = (result: ExtractionResult) =>
+  result.scripts.some((script) => script.gsapCallCount > 0 || script.library);
+
 const Summary = ({ result }: { result: ExtractionResult }) => {
-  const { gsap, webflow } = result;
+  const { gsap } = result;
+  if (!gsap.detected) {
+    return (
+      <output className="status">
+        No GSAP detected on this site.
+        {hasScriptHits(result)
+          ? " Page scripts still reference GSAP, so it may be bundled privately. Showing source snippets."
+          : ""}
+      </output>
+    );
+  }
   return (
     <section className="summary">
       <p>
-        <strong>GSAP:</strong>{" "}
-        {gsap.detected ? `v${gsap.version ?? "?"}` : "not found on window"}
+        <strong>GSAP:</strong> v{gsap.version ?? "?"}
         {gsap.plugins.length > 0 ? ` · ${gsap.plugins.join(", ")}` : ""}
         {gsap.recording ? " · recording" : ""}
-      </p>
-      <p>
-        <strong>Webflow:</strong>{" "}
-        {webflow.detected ? (webflow.siteId ?? "detected") : "not detected"}
       </p>
       <p>
         <strong>Found:</strong> {result.animations.length} animation(s),{" "}
@@ -101,7 +112,11 @@ export const App = () => {
     }
   };
 
-  const output = result ? render(result, view) : "";
+  const detected = result?.gsap.detected ?? false;
+  const effectiveView = detected ? view : "scripts";
+  const visibleViews = detected ? VIEWS : SCRIPTS_ONLY;
+  const showOutput = result !== null && (detected || hasScriptHits(result));
+  const output = result ? render(result, effectiveView) : "";
   const busy = status.kind === "busy";
 
   const copy = async () => {
@@ -164,13 +179,14 @@ export const App = () => {
         </p>
       ) : null}
 
-      {result ? (
+      {result ? <Summary result={result} /> : null}
+
+      {result && showOutput ? (
         <>
-          <Summary result={result} />
           <nav className="tabs">
-            {VIEWS.map((item) => (
+            {visibleViews.map((item) => (
               <button
-                aria-pressed={view === item.value}
+                aria-pressed={effectiveView === item.value}
                 key={item.value}
                 onClick={() => {
                   setView(item.value);
@@ -191,7 +207,7 @@ export const App = () => {
             </button>
             <button
               onClick={() => {
-                download(fileName(result, view), output);
+                download(fileName(result, effectiveView), output);
               }}
               type="button"
             >

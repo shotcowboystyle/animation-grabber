@@ -89,7 +89,7 @@ export interface ExtractionResult {
 }
 
 export interface InPageOptions {
-  /** Fetch same-origin / Webflow CDN scripts and scan them for GSAP calls. */
+  /** Fetch same-origin (and Webflow CDN) scripts and scan them for GSAP calls. */
   fetchExternalScripts: boolean;
   /** Longest function source (in characters) kept in serialized vars. */
   maxFunctionSource: number;

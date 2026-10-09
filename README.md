@@ -2,7 +2,7 @@
 
 <img src="brand/logo/ag-horizontal-primary.svg" alt="Animation Grabber" width="420" />
 
-Point at any Webflow page. Get its GSAP back. Animation Grabber pulls the live GSAP tweens, timelines and ScrollTriggers out of a page and hands them to you, or your coding agent, as runnable code, JSON, or the page's own GSAP source snippets.
+Point at any page that uses GSAP. Get its GSAP back. Animation Grabber pulls the live GSAP tweens, timelines and ScrollTriggers out of a page and hands them to you, or your coding agent, as runnable code, JSON, or the page's own GSAP source snippets.
 
 Three ways to grab:
 
@@ -20,7 +20,7 @@ Marketing site: [`apps/web`](apps/web). Brand assets and guidelines: [`brand/`](
 2. **Record** fixes the one blind spot: GSAP removes finished tweens from its global timeline, so intro animations are gone by the time you click. The recorder sets `gsap.globalTimeline.autoRemoveChildren = false` as soon as the page assigns `window.gsap`. The extension registers it as a `document_start` content script for the current origin and reloads; the CLI injects it with `addInitScript` before navigation.
 3. **Codegen** rebuilds `gsap.to / from / fromTo / set`, `gsap.timeline` (with `.add`, `.addLabel`, positions), inline `scrollTrigger` configs and standalone `ScrollTrigger.create` calls.
 
-Limitations: GSAP must be reachable as `window.gsap` (Webflow's CDN embed and Webflow's native GSAP interactions both expose it; a private Vite bundle does not). Functions are captured as source, so closures over page state will not run as-is. Webflow IX2 (non-GSAP) interactions are out of scope.
+Limitations: GSAP must be reachable as `window.gsap` (script-tag and CDN setups expose it, as do Webflow's native GSAP interactions; a private Vite or webpack bundle does not, though the Scripts view still shows the bundle's GSAP calls). Functions are captured as source, so closures over page state will not run as-is. Non-GSAP animation systems (CSS, Lottie, Webflow IX2) are out of scope.
 
 ## Repository
 
