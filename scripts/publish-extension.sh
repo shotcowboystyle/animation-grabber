@@ -3,7 +3,7 @@
 # and Firefox, submit to each store whose credentials are configured, then
 # tag the commit and create a GitHub release with the zips attached.
 # Store credentials are the publish-browser-extension env vars
-# (CHROME_EXTENSION_ID, CHROME_CLIENT_ID, ..., FIREFOX_JWT_SECRET); a store
+# (CHROME_EXTENSION_ID, CHROME_PUBLISHER_ID, ..., FIREFOX_JWT_SECRET); a store
 # is skipped when its extension id is unset.
 set -euo pipefail
 
