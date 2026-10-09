@@ -14,5 +14,7 @@
     "**/coverage",
     "**/dist",
     "AGENTS.md",
+    // Changesets start with YAML front matter, not a heading.
+    ".changeset/*.md",
   ],
 }

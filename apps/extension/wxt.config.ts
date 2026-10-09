@@ -20,6 +20,8 @@ export default defineConfig({
               id: "animation-grabber@shotcowboystyle.dev",
               strict_min_version: "140.0",
             },
+            // Android shipped data_collection_permissions later than desktop.
+            gecko_android: { strict_min_version: "142.0" },
           }
         : undefined,
     description:

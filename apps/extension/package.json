@@ -13,7 +13,7 @@
     "zip:firefox": "wxt zip -b firefox",
     "postinstall": "wxt prepare",
     "typecheck": "tsc --noEmit",
-    "lint:webext": "web-ext lint --source-dir .output/firefox-mv3",
+    "lint:webext": "web-ext lint --warnings-as-errors --source-dir .output/firefox-mv3",
     "react-doctor": "react-doctor . --verbose"
   },
   "dependencies": {
