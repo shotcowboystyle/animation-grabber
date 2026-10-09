@@ -34,4 +34,21 @@ export default defineConfig({
   // 140 is the first release with data_collection_permissions.
   manifestVersion: 3,
   modules: ["@wxt-dev/module-react"],
+  zip: {
+    artifactTemplate: "animation-grabber-{{version}}-{{browser}}.zip",
+    excludeSources: [
+      "apps/cli/**",
+      "apps/web/**",
+      "brand/**",
+      "skills/**",
+      "scripts/**",
+      ".github/**",
+      ".changeset/**",
+      "**/store/**",
+    ],
+    // AMO reviewers rebuild from source, which needs the workspace root
+    // (lockfile, packages/core), not just this app.
+    sourcesRoot: "../..",
+    sourcesTemplate: "animation-grabber-{{version}}-sources.zip",
+  },
 });

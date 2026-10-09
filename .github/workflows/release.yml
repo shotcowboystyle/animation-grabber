@@ -1,7 +1,8 @@
 name: Release
 
 # On every push to main, changesets either opens/updates the "Version Packages"
-# PR (pending changesets) or, once that PR is merged, publishes the CLI to npm.
+# PR (pending changesets) or, once that PR is merged, publishes the CLI to npm
+# and the extension to GitHub releases + the browser stores.
 # npm auth is trusted publishing (OIDC): no NPM_TOKEN secret is stored.
 on:
   push:
@@ -62,3 +63,16 @@ jobs:
         run: scripts/publish-cli.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish extension
+        if: steps.changesets.outputs.has-changesets == 'false'
+        run: scripts/publish-extension.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHROME_EXTENSION_ID: ${{ vars.CHROME_EXTENSION_ID }}
+          CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          FIREFOX_EXTENSION_ID: ${{ vars.FIREFOX_EXTENSION_ID }}
+          FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
