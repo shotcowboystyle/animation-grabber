@@ -3,3 +3,5 @@ packages:
   - packages/*
 minimumReleaseAgeExclude:
   - vite@8.3.4
+patchedDependencies:
+  react-dom@19.3.0: patches/react-dom@19.3.0.patch
