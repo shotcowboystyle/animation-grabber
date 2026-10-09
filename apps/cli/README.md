@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/shotcowboystyle/animation-grabber/main/brand/logo/ag-stacked-primary.svg" width="160" alt="" align="right" />
 
-Grab the live GSAP tweens, timelines and ScrollTriggers from any Webflow page as runnable code. Built for AI coding agents.
+Grab the live GSAP tweens, timelines and ScrollTriggers from any page that uses GSAP, as runnable code. Built for AI coding agents.
 
 ## Usage
 
@@ -11,9 +11,9 @@ npx animation-grabber <url> [options]
 ```
 
 ```bash
-npx animation-grabber https://example.webflow.io
-npx animation-grabber https://example.webflow.io --format json -o anim.json
-npx animation-grabber https://example.webflow.io --format scripts
+npx animation-grabber https://example.com
+npx animation-grabber https://example.com --format json -o anim.json
+npx animation-grabber https://example.com --format scripts
 ```
 
 For frequent use, install globally with `npm install -g animation-grabber`.
@@ -46,7 +46,7 @@ npx skills add shotcowboystyle/animation-grabber
 ```
 
 ```text
-/animation-grabber https://example.webflow.io
+/animation-grabber https://example.com
 ```
 
 ## Privacy

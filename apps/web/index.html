@@ -3,18 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Animation Grabber — Grab GSAP animations from any Webflow page
-    </title>
+    <title>Animation Grabber — Grab GSAP animations from any page</title>
     <meta
       name="description"
-      content="Point at any Webflow page and get its GSAP tweens, timelines and ScrollTriggers back as runnable code. Chrome extension, CLI and agent skill. Runs locally."
+      content="Point at any page that uses GSAP and get its tweens, timelines and ScrollTriggers back as runnable code. Chrome extension, CLI and agent skill. Runs locally."
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content="Animation Grabber" />
     <meta
       property="og:description"
-      content="Point at any Webflow page. Get its GSAP back as runnable code."
+      content="Point at any page that uses GSAP. Get its GSAP back as runnable code."
     />
     <meta property="og:image" content="/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -25,6 +23,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
+    <!-- Same Umami site as the portfolio: one origin, one dashboard, split by path. -->
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="1427b780-3626-4e70-87a5-09b06ce64b8e"
+      data-domains="shotcowboystyle.github.io"
+    ></script>
   </head>
   <body>
     <header class="nav">
@@ -59,7 +64,7 @@
           width="172"
           height="230"
         />
-        <h1>Point at any Webflow page.<br />Get its GSAP back.</h1>
+        <h1>Point at any page that uses GSAP.<br />Get its GSAP back.</h1>
         <p class="lede">
           Animation Grabber pulls the live GSAP tweens, timelines and
           ScrollTriggers out of a page and hands them to you, or your coding
@@ -145,9 +150,9 @@ gsap.to(".feature-card", {
           <p class="eyebrow">Chrome extension</p>
           <h2 id="extension-title">Open, grab, paste.</h2>
           <p>
-            Works on any Webflow page that exposes <code>window.gsap</code>.
-            Needs only <code>activeTab</code>; host access is requested per
-            site, only when you record.
+            Works on any page that exposes <code>window.gsap</code>. Needs only
+            <code>activeTab</code>; host access is requested per site, only when
+            you record.
           </p>
           <a
             class="button button-primary"
@@ -201,11 +206,11 @@ gsap.to(".feature-card", {
         <div class="commands">
           <div class="command">
             <span class="command-label">Run directly</span>
-            <pre><code>npx animation-grabber https://example.webflow.io</code></pre>
+            <pre><code>npx animation-grabber https://example.com</code></pre>
             <button
               class="copy"
               type="button"
-              data-copy="npx animation-grabber https://example.webflow.io"
+              data-copy="npx animation-grabber https://example.com"
             >
               Copy
             </button>
@@ -223,11 +228,11 @@ gsap.to(".feature-card", {
           </div>
           <div class="command">
             <span class="command-label">JSON for your agent</span>
-            <pre><code>animation-grabber https://example.webflow.io --format json -o anim.json</code></pre>
+            <pre><code>animation-grabber https://example.com --format json -o anim.json</code></pre>
             <button
               class="copy"
               type="button"
-              data-copy="animation-grabber https://example.webflow.io --format json -o anim.json"
+              data-copy="animation-grabber https://example.com --format json -o anim.json"
             >
               Copy
             </button>
@@ -265,11 +270,11 @@ gsap.to(".feature-card", {
           </div>
           <div class="command">
             <span class="command-label">Use</span>
-            <pre><code>/animation-grabber https://example.webflow.io</code></pre>
+            <pre><code>/animation-grabber https://example.com</code></pre>
             <button
               class="copy"
               type="button"
-              data-copy="/animation-grabber https://example.webflow.io"
+              data-copy="/animation-grabber https://example.com"
             >
               Copy
             </button>
@@ -313,7 +318,7 @@ gsap.to(".feature-card", {
           target="_blank"
           >shotcowboystyle</a
         >
-        · v0.2.0 · not affiliated with Webflow or GreenSock
+        · v0.2.0 · not affiliated with GreenSock
       </p>
     </footer>
 

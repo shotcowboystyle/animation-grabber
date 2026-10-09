@@ -1,6 +1,6 @@
 ---
 name: animation-grabber
-description: Grab the live GSAP tweens, timelines and ScrollTriggers from any Webflow (or other GSAP-powered) page as runnable code or JSON, then rebuild them in the user's project. Use when the user wants to clone, replicate, reference or port a website's animations. Triggers include "grab the animations from", "how is this page animated", "copy the GSAP from", "recreate this scroll animation", "extract the ScrollTrigger setup", or any task where the user points at a live site whose motion they want to reproduce.
+description: Grab the live GSAP tweens, timelines and ScrollTriggers from any page that uses GSAP as runnable code or JSON, then rebuild them in the user's project. Use when the user wants to clone, replicate, reference or port a website's animations. Triggers include "grab the animations from", "how is this page animated", "copy the GSAP from", "recreate this scroll animation", "extract the ScrollTrigger setup", or any task where the user points at a live site whose motion they want to reproduce.
 user-invocable: true
 argument-hint: <url> [code|json|scripts]
 allowed-tools: Bash(npx animation-grabber:*), Bash(animation-grabber:*)
@@ -70,6 +70,6 @@ npx playwright install chromium
 
 ## Limits
 
-- Only GSAP exposed as `window.gsap` is read live. Webflow's CDN embed and Webflow's native GSAP interactions both qualify.
-- Webflow IX2 (non-GSAP) interactions are out of scope.
+- Only GSAP exposed as `window.gsap` is read live. Script-tag and CDN setups qualify, as do Webflow's native GSAP interactions; a private Vite or webpack bundle does not (use `--format scripts`).
+- Non-GSAP animation systems (CSS, Lottie, Webflow IX2) are out of scope.
 - Everything runs locally; nothing is uploaded.

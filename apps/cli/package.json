@@ -1,7 +1,7 @@
 {
   "name": "animation-grabber",
   "version": "0.2.0",
-  "description": "Grab GSAP tweens, timelines and ScrollTriggers from any Webflow page as runnable code. Built for AI coding agents.",
+  "description": "Grab GSAP tweens, timelines and ScrollTriggers from any page that uses GSAP, as runnable code. Built for AI coding agents.",
   "keywords": [
     "ai",
     "animation",

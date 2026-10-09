@@ -30,8 +30,8 @@ Options:
   -h, --help                        Show this help
 
 Examples:
-  npx animation-grabber https://example.webflow.io
-  npx animation-grabber https://example.webflow.io --format json -o anim.json
+  npx animation-grabber https://example.com
+  npx animation-grabber https://example.com --format json -o anim.json
 `;
 
 export const parseOptions = (argv: string[]): Options | "help" => {

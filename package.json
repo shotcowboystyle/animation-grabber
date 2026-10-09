@@ -2,7 +2,7 @@
   "name": "animation-grabber-monorepo",
   "version": "0.2.0",
   "private": true,
-  "description": "Grab GSAP animations from any Webflow page: browser extension, CLI and agent skill",
+  "description": "Grab GSAP animations from any page that uses GSAP: browser extension, CLI and agent skill",
   "type": "module",
   "scripts": {
     "build": "turbo run build",
