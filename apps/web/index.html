@@ -87,6 +87,7 @@
         <a href="#extension">Extension</a>
         <a href="#cli">CLI</a>
         <a href="#skill">Skill</a>
+        <a href="#faq">FAQ</a>
         <a
           class="button button-ghost"
           href="https://github.com/shotcowboystyle/animation-grabber"
@@ -322,6 +323,137 @@ gsap.to(".feature-card", {
             </button>
           </div>
         </div>
+      </section>
+
+      <section class="faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>How do I copy a GSAP animation from a website?</summary>
+            <p>
+              Open the page and click the Animation Grabber toolbar icon. It
+              lists the page's live tweens, timelines and ScrollTriggers, which
+              you can copy as GSAP code, as JSON, or as the page's own GSAP
+              snippets. From a terminal, run
+              <code>npx animation-grabber &lt;url&gt;</code>.
+            </p>
+          </details>
+          <details>
+            <summary>Does it work on Webflow sites?</summary>
+            <p>
+              Yes. It reads Webflow's built-in GSAP interactions, and any site
+              that loads GSAP from a script tag or a CDN. Webflow's older IX2
+              interaction engine isn't GSAP, so those animations can't be read.
+            </p>
+          </details>
+          <details>
+            <summary>Does it work in Firefox?</summary>
+            <p>
+              A Firefox version is waiting for review on Mozilla's add-on store.
+              Until it's approved, use the Chrome extension or the CLI.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Why does it say <code>window.gsap is not defined</code>?
+            </summary>
+            <p>
+              The site either bundles GSAP inside its own JavaScript build
+              (Vite, webpack) or doesn't use GSAP. A bundled copy can't be read
+              live, but the Scripts view still lists any GSAP calls found in the
+              page's script files. The CLI does the same with
+              <code>--format scripts</code>.
+            </p>
+          </details>
+          <details>
+            <summary>Why are the page's intro animations missing?</summary>
+            <p>
+              GSAP discards animations once they finish, so a load-time intro is
+              gone by the time you click. Use Reload &amp; record: it reloads
+              the page with a recorder attached so those animations are kept.
+              The CLI records automatically.
+            </p>
+          </details>
+          <details>
+            <summary>Why did it find GSAP but zero animations?</summary>
+            <p>
+              The page probably creates its animations only after a hover, click
+              or scroll. In the extension, trigger the interaction first, then
+              extract. In the CLI, <code>--wait 3000</code> gives the page more
+              time, but it doesn't scroll or click for you.
+            </p>
+          </details>
+          <details>
+            <summary>
+              How is this different from reading the site's source?
+            </summary>
+            <p>
+              Source is usually minified, and parts of it may be generated at
+              runtime. Animation Grabber reads what GSAP is actually running:
+              the final durations, eases, positions, targets and ScrollTrigger
+              start and end points.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Can I reuse animations I grab from someone else's site?
+            </summary>
+            <p>
+              Treat the output as a reference for learning how something was
+              built. The motion design belongs to whoever made the site, so
+              check their terms before shipping a copy. Animation Grabber is not
+              affiliated with GreenSock.
+            </p>
+          </details>
+        </div>
+
+        <h3 id="limitations">Limitations</h3>
+        <ul class="limits">
+          <li>
+            <strong>GSAP must be exposed as <code>window.gsap</code>.</strong>
+            A copy bundled privately into the site's code can't be read live;
+            only its source snippets are available.
+          </li>
+          <li>
+            <strong>Only GSAP.</strong> CSS animations, Lottie and Webflow IX2
+            aren't captured.
+          </li>
+          <li>
+            <strong>Only the current screen size.</strong> Capture reflects the
+            viewport at that moment (the CLI uses the headless browser's default
+            size). Breakpoint-specific animations from
+            <code>gsap.matchMedia</code> aren't rebuilt as responsive code.
+          </li>
+          <li>
+            <strong>Only the top-level page.</strong> GSAP running inside
+            iframes isn't read.
+          </li>
+          <li>
+            <strong>No logins or interactions in the CLI.</strong> It opens a
+            fresh browser with no cookies and doesn't scroll, click or sign in.
+            Pages behind a login, or animated only on interaction, come back
+            partial.
+          </li>
+          <li>
+            <strong>Callbacks may need rework.</strong> Functions such as
+            <code>onUpdate</code> or function-based values are copied as source
+            text, up to 2,000 characters. Anything that relies on the original
+            page's variables won't run as-is.
+          </li>
+          <li>
+            <strong>Selectors describe the source page.</strong> The generated
+            CSS selectors match that page's markup; map them onto yours.
+          </li>
+          <li>
+            <strong>Some scripts can't be read.</strong> Files the browser
+            blocks from cross-site fetching appear in the Scripts view with an
+            error instead of their contents.
+          </li>
+          <li>
+            <strong>Very large pages are capped.</strong> Extraction stops at
+            2,000 animations and shows a warning.
+          </li>
+        </ul>
       </section>
 
       <section class="privacy" id="privacy" aria-labelledby="privacy-title">

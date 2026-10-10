@@ -20,6 +20,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchor targets clear of the sticky nav (taller when it wraps on mobile). */
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -356,6 +358,58 @@ p {
   background: var(--bubblegum);
   border-color: var(--bubblegum);
   color: white;
+}
+
+.faq {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 80px) var(--gutter) 0;
+  display: grid;
+  gap: 20px;
+  border-top: 2.5px solid var(--indigo);
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq details {
+  border: 2.5px solid var(--indigo);
+  border-radius: var(--radius);
+  background: white;
+}
+
+.faq summary {
+  padding: 16px 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.faq summary:focus-visible {
+  outline: 3px solid var(--electric);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+.faq details p {
+  padding: 0 20px 18px;
+}
+
+.faq h3 {
+  margin-top: 20px;
+  font-size: 1.4rem;
+}
+
+.limits {
+  margin: 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: 10px;
+}
+
+.limits li::marker {
+  color: var(--bubblegum);
 }
 
 .privacy {
