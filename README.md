@@ -6,11 +6,11 @@ Point at any page that uses GSAP. Get its GSAP back. Animation Grabber pulls the
 
 Three ways to grab:
 
-| Surface                    | Where                                                                                                       | What                                                              |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Chrome / Firefox extension | [`apps/extension`](apps/extension)                                                                          | Point-and-click. Extract, Reload & record, copy or download.      |
-| CLI                        | [`apps/cli`](apps/cli) · `npx animation-grabber <url>`                                                      | Headless Chromium with the recorder attached from the first byte. |
-| Agent skill                | [`skills/animation-grabber`](skills/animation-grabber) · `npx skills add shotcowboystyle/animation-grabber` | `/animation-grabber <url>` in Claude Code.                        |
+| Surface                    | Where                                                                                                                     | What                                                              |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Chrome / Firefox extension | [`apps/extension`](apps/extension) · [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/animation-grabber/) | Point-and-click. Extract, Reload & record, copy or download.      |
+| CLI                        | [`apps/cli`](apps/cli) · `npx animation-grabber <url>`                                                                    | Headless Chromium with the recorder attached from the first byte. |
+| Agent skill                | [`skills/animation-grabber`](skills/animation-grabber) · `npx skills add shotcowboystyle/animation-grabber`               | `/animation-grabber <url>` in Claude Code.                        |
 
 Marketing site: [`apps/web`](apps/web). Brand assets and guidelines: [`brand/`](brand/README.md).
 
