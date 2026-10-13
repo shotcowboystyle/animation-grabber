@@ -1,5 +1,5 @@
-import { recordGsapInPage } from "@animation-grabber/core/record-in-page";
-import { defineContentScript } from "wxt/utils/define-content-script";
+import { recordGsapInPage } from '@animation-grabber/core/record-in-page';
+import { defineContentScript } from 'wxt/utils/define-content-script';
 
 /**
  * Registered at runtime (see `recordAndExtract`) for one origin, runs in the
@@ -10,8 +10,8 @@ export default defineContentScript({
   main() {
     recordGsapInPage();
   },
-  matches: ["*://*/*"],
-  registration: "runtime",
-  runAt: "document_start",
-  world: "MAIN",
+  matches: ['*://*/*'],
+  registration: 'runtime',
+  runAt: 'document_start',
+  world: 'MAIN',
 });

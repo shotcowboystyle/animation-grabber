@@ -5,52 +5,52 @@ import type {
   ExtractionResult,
   SerializedValue,
   SerializedVars,
-} from "./types";
+} from './types';
 
-const INDENT = "  ";
+const INDENT = '  ';
 const IDENTIFIER = /^[A-Za-z_$][\w$]*$/u;
 const NON_IDENTIFIER = /[^\w$]/gu;
 const LEADING_DIGIT = /^\d/u;
 const RESERVED = new Set([
-  "await",
-  "break",
-  "case",
-  "catch",
-  "class",
-  "const",
-  "continue",
-  "default",
-  "delete",
-  "do",
-  "else",
-  "enum",
-  "export",
-  "extends",
-  "false",
-  "finally",
-  "for",
-  "function",
-  "if",
-  "import",
-  "in",
-  "instanceof",
-  "let",
-  "new",
-  "null",
-  "return",
-  "static",
-  "super",
-  "switch",
-  "this",
-  "throw",
-  "true",
-  "try",
-  "typeof",
-  "var",
-  "void",
-  "while",
-  "with",
-  "yield",
+  'await',
+  'break',
+  'case',
+  'catch',
+  'class',
+  'const',
+  'continue',
+  'default',
+  'delete',
+  'do',
+  'else',
+  'enum',
+  'export',
+  'extends',
+  'false',
+  'finally',
+  'for',
+  'function',
+  'if',
+  'import',
+  'in',
+  'instanceof',
+  'let',
+  'new',
+  'null',
+  'return',
+  'static',
+  'super',
+  'switch',
+  'this',
+  'throw',
+  'true',
+  'try',
+  'typeof',
+  'var',
+  'void',
+  'while',
+  'with',
+  'yield',
 ]);
 
 type Names = Map<string, string>;
@@ -63,50 +63,46 @@ interface Context {
 }
 
 const isRecord = (value: SerializedValue): value is SerializedVars =>
-  typeof value === "object" && value !== null && !Array.isArray(value);
+  typeof value === 'object' && value !== null && !Array.isArray(value);
 
-const formatKey = (key: string) =>
-  IDENTIFIER.test(key) ? key : JSON.stringify(key);
+const formatKey = (key: string) => (IDENTIFIER.test(key) ? key : JSON.stringify(key));
 
 const toJs = (value: SerializedValue, depth: number, names: Names): string => {
   if (value === null) {
-    return "null";
+    return 'null';
   }
-  if (typeof value !== "object") {
+  if (typeof value !== 'object') {
     return JSON.stringify(value);
   }
   if (Array.isArray(value)) {
-    return `[${value.map((item) => toJs(item, depth, names)).join(", ")}]`;
+    return `[${value.map((item) => toJs(item, depth, names)).join(', ')}]`;
   }
-  if ("__el" in value && typeof value.__el === "string") {
+  if ('__el' in value && typeof value.__el === 'string') {
     return JSON.stringify(value.__el);
   }
-  if ("__fn" in value && typeof value.__fn === "string") {
+  if ('__fn' in value && typeof value.__fn === 'string') {
     return value.__fn;
   }
-  if ("__anim" in value && typeof value.__anim === "string") {
-    return names.get(value.__anim) ?? "undefined";
+  if ('__anim' in value && typeof value.__anim === 'string') {
+    return names.get(value.__anim) ?? 'undefined';
   }
   const entries = Object.entries(value);
   if (entries.length === 0) {
-    return "{}";
+    return '{}';
   }
   const pad = INDENT.repeat(depth + 1);
   const body = entries
-    .map(
-      ([key, item]) =>
-        `${pad}${formatKey(key)}: ${toJs(item, depth + 1, names)}`
-    )
-    .join(",\n");
+    .map(([key, item]) => `${pad}${formatKey(key)}: ${toJs(item, depth + 1, names)}`)
+    .join(',\n');
   return `{\n${body}\n${INDENT.repeat(depth)}}`;
 };
 
 const sanitizeName = (id: string) => {
-  let name = id.replaceAll(NON_IDENTIFIER, "_");
+  let name = id.replaceAll(NON_IDENTIFIER, '_');
   if (LEADING_DIGIT.test(name)) {
     name = `_${name}`;
   }
-  if (name === "" || RESERVED.has(name)) {
+  if (name === '' || RESERVED.has(name)) {
     name = `${name}_`;
   }
   return name;
@@ -144,11 +140,9 @@ const groupChildren = (animations: ExtractedAnimation[]) => {
 
 /** Keys GSAP adds to `vars` itself for from/fromTo/set calls, with the
  * value they hold when they carry no user intent. */
-const BOOKKEEPING: Partial<
-  Record<AnimationMethod, Record<string, SerializedValue>>
-> = {
+const BOOKKEEPING: Partial<Record<AnimationMethod, Record<string, SerializedValue>>> = {
   from: { immediateRender: true, runBackwards: 1 },
-  fromTo: { immediateRender: true, startAt: "*" },
+  fromTo: { immediateRender: true, startAt: '*' },
   set: { duration: 0, repeat: 0 },
 };
 
@@ -157,24 +151,22 @@ const cleanVars = (animation: ExtractedAnimation): SerializedVars => {
   return Object.fromEntries(
     Object.entries(animation.vars).filter(([key, value]) => {
       const expected = drop[key];
-      return expected === undefined || (expected !== "*" && expected !== value);
-    })
+      return expected === undefined || (expected !== '*' && expected !== value);
+    }),
   );
 };
 
 const targetsArg = (targets: string[]) =>
   targets.length === 1
     ? JSON.stringify(targets[0])
-    : `[${targets.map((target) => JSON.stringify(target)).join(", ")}]`;
+    : `[${targets.map((target) => JSON.stringify(target)).join(', ')}]`;
 
 const tweenArgs = (animation: ExtractedAnimation, names: Names) => {
   const vars = cleanVars(animation);
   const args = [targetsArg(animation.targets)];
-  if (animation.method === "fromTo") {
+  if (animation.method === 'fromTo') {
     const { startAt } = animation.vars;
-    args.push(
-      toJs(startAt !== undefined && isRecord(startAt) ? startAt : {}, 0, names)
-    );
+    args.push(toJs(startAt !== undefined && isRecord(startAt) ? startAt : {}, 0, names));
   }
   args.push(toJs(vars, 0, names));
   return args;
@@ -183,34 +175,30 @@ const tweenArgs = (animation: ExtractedAnimation, names: Names) => {
 const emitTween = (
   animation: ExtractedAnimation,
   context: Context,
-  owner: string | null
+  owner: string | null,
 ): string => {
   const args = tweenArgs(animation, context.names);
   if (owner === null) {
-    const call = `gsap.${animation.method}(${args.join(", ")});`;
+    const call = `gsap.${animation.method}(${args.join(', ')});`;
     return context.referenced.has(animation.id)
       ? `const ${context.names.get(animation.id)} = ${call}`
       : call;
   }
   args.push(String(animation.position ?? 0));
-  return `${owner}.${animation.method}(${args.join(", ")});`;
+  return `${owner}.${animation.method}(${args.join(', ')});`;
 };
 
 const emitAnimation = (
   animation: ExtractedAnimation,
   context: Context,
-  owner: string | null
+  owner: string | null,
 ): string[] => {
-  if (animation.kind === "tween") {
+  if (animation.kind === 'tween') {
     return [emitTween(animation, context, owner)];
   }
   const name = context.names.get(animation.id) ?? sanitizeName(animation.id);
-  const lines = [
-    `const ${name} = gsap.timeline(${toJs(animation.vars, 0, context.names)});`,
-  ];
-  const labels = Object.entries(animation.labels).toSorted(
-    ([, a], [, b]) => a - b
-  );
+  const lines = [`const ${name} = gsap.timeline(${toJs(animation.vars, 0, context.names)});`];
+  const labels = Object.entries(animation.labels).toSorted(([, a], [, b]) => a - b);
   for (const [label, time] of labels) {
     lines.push(`${name}.addLabel(${JSON.stringify(label)}, ${String(time)});`);
   }
@@ -225,12 +213,9 @@ const emitAnimation = (
 
 /** Triggers that were not created inline through a tween's `scrollTrigger` key. */
 const standaloneTriggers = (result: ExtractionResult) => {
-  const byId = new Map(
-    result.animations.map((animation) => [animation.id, animation])
-  );
+  const byId = new Map(result.animations.map((animation) => [animation.id, animation]));
   return result.scrollTriggers.filter((trigger) => {
-    const animation =
-      trigger.animationId === null ? undefined : byId.get(trigger.animationId);
+    const animation = trigger.animationId === null ? undefined : byId.get(trigger.animationId);
     return animation?.vars.scrollTrigger === undefined;
   });
 };
@@ -245,10 +230,8 @@ const emitScrollTrigger = (trigger: ExtractedScrollTrigger, names: Names) => {
 
 const usesScrollTrigger = (result: ExtractionResult) =>
   result.scrollTriggers.length > 0 ||
-  result.gsap.plugins.includes("ScrollTrigger") ||
-  result.animations.some(
-    (animation) => animation.vars.scrollTrigger !== undefined
-  );
+  result.gsap.plugins.includes('ScrollTrigger') ||
+  result.animations.some((animation) => animation.vars.scrollTrigger !== undefined);
 
 /** Turn an extraction result back into runnable GSAP code. */
 export const toGsapCode = (result: ExtractionResult): string => {
@@ -257,42 +240,38 @@ export const toGsapCode = (result: ExtractionResult): string => {
     childrenOf: groupChildren(result.animations),
     names: assignNames(result.animations),
     referenced: new Set(
-      triggers.flatMap((trigger) =>
-        trigger.animationId === null ? [] : [trigger.animationId]
-      )
+      triggers.flatMap((trigger) => (trigger.animationId === null ? [] : [trigger.animationId])),
     ),
   };
-  const versionSuffix = result.gsap.version
-    ? ` · GSAP ${result.gsap.version}`
-    : "";
+  const versionSuffix = result.gsap.version ? ` · GSAP ${result.gsap.version}` : '';
   const lines = [
     `// GSAP animations extracted from ${result.url}`,
     `// ${result.extractedAt}${versionSuffix}`,
-    "",
+    '',
   ];
   if (usesScrollTrigger(result)) {
-    lines.push("gsap.registerPlugin(ScrollTrigger);", "");
+    lines.push('gsap.registerPlugin(ScrollTrigger);', '');
   }
   if (result.animations.length === 0) {
-    lines.push("// No live GSAP animations were found on the page.", "");
+    lines.push('// No live GSAP animations were found on the page.', '');
   }
   for (const root of context.childrenOf.get(null) ?? []) {
-    lines.push(...emitAnimation(root, context, null), "");
+    lines.push(...emitAnimation(root, context, null), '');
   }
   for (const trigger of triggers) {
-    lines.push(emitScrollTrigger(trigger, context.names), "");
+    lines.push(emitScrollTrigger(trigger, context.names), '');
   }
-  return `${lines.join("\n").trimEnd()}\n`;
+  return `${lines.join('\n').trimEnd()}\n`;
 };
 
 /** Human-readable dump of the scanned page scripts. */
 export const scriptsToText = (result: ExtractionResult): string => {
   if (result.scripts.length === 0) {
-    return "// No scripts referencing GSAP were found.\n";
+    return '// No scripts referencing GSAP were found.\n';
   }
   return result.scripts
     .map((script) => {
-      const label = script.src ?? "inline <script>";
+      const label = script.src ?? 'inline <script>';
       if (script.library) {
         return `// library: ${label}`;
       }
@@ -301,6 +280,6 @@ export const scriptsToText = (result: ExtractionResult): string => {
       }
       return `// ${label} — ${script.gsapCallCount} GSAP call(s), ${script.size} chars\n${script.snippet}`;
     })
-    .join("\n\n")
-    .concat("\n");
+    .join('\n\n')
+    .concat('\n');
 };

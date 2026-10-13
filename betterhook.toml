@@ -37,16 +37,7 @@ concurrent_safe = true
 
 [hooks.pre-commit.jobs.spell]
 run = "pnpm exec cspell --no-progress {staged_files}"
-glob = [
-  "*.ts",
-  "*.tsx",
-  "*.md",
-  "*.json",
-  "*.jsonc",
-  "*.yml",
-  "*.yaml",
-  "*.toml",
-]
+glob = ["*.ts", "*.tsx", "*.md", "*.json", "*.jsonc", "*.yml", "*.yaml", "*.toml"]
 reads = ["**/*", "cspell.json"]
 writes = []
 concurrent_safe = true

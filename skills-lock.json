@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "seo": {
+      "source": "mblode/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo/SKILL.md",
+      "computedHash": "10f7fbc3b3c0dc0577b74079628ac648536361c975efb2a1391bb4ef52f39a56"
+    }
+  }
+}

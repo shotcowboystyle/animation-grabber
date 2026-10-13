@@ -1,6 +1,6 @@
-import { parseArgs } from "node:util";
+import { parseArgs } from 'node:util';
 
-export type Format = "code" | "json" | "scripts";
+export type Format = 'code' | 'json' | 'scripts';
 
 export interface Options {
   format: Format;
@@ -13,7 +13,7 @@ export interface Options {
   wait: number;
 }
 
-const FORMATS = new Set<string>(["code", "json", "scripts"]);
+const FORMATS = new Set<string>(['code', 'json', 'scripts']);
 const DEFAULT_WAIT_MS = 750;
 
 export const HELP = `animation-grabber <url> [options]
@@ -34,33 +34,31 @@ Examples:
   npx animation-grabber https://example.com --format json -o anim.json
 `;
 
-export const parseOptions = (argv: string[]): Options | "help" => {
+export const parseOptions = (argv: string[]): Options | 'help' => {
   const { positionals, values } = parseArgs({
     allowNegative: true,
     allowPositionals: true,
     args: argv,
     options: {
-      format: { default: "code", short: "f", type: "string" },
-      headed: { default: false, type: "boolean" },
-      help: { default: false, short: "h", type: "boolean" },
-      out: { short: "o", type: "string" },
-      record: { default: true, type: "boolean" },
-      scripts: { default: true, type: "boolean" },
-      wait: { default: String(DEFAULT_WAIT_MS), short: "w", type: "string" },
+      format: { default: 'code', short: 'f', type: 'string' },
+      headed: { default: false, type: 'boolean' },
+      help: { default: false, short: 'h', type: 'boolean' },
+      out: { short: 'o', type: 'string' },
+      record: { default: true, type: 'boolean' },
+      scripts: { default: true, type: 'boolean' },
+      wait: { default: String(DEFAULT_WAIT_MS), short: 'w', type: 'string' },
     },
     strict: true,
   });
   if (values.help) {
-    return "help";
+    return 'help';
   }
   const [url] = positionals;
   if (url === undefined) {
     throw new Error(`A page URL is required.\n\n${HELP}`);
   }
   if (!FORMATS.has(values.format)) {
-    throw new Error(
-      `Unknown format "${values.format}". Use code, json or scripts.`
-    );
+    throw new Error(`Unknown format "${values.format}". Use code, json or scripts.`);
   }
   const wait = Number(values.wait);
   if (!Number.isFinite(wait) || wait < 0) {

@@ -6,11 +6,11 @@ Point at any page that uses GSAP. Get its GSAP back. Animation Grabber pulls the
 
 Three ways to grab:
 
-| Surface | Where | What |
-| --- | --- | --- |
-| Chrome / Firefox extension | [`apps/extension`](apps/extension) | Point-and-click. Extract, Reload & record, copy or download. |
-| CLI | [`apps/cli`](apps/cli) · `npx animation-grabber <url>` | Headless Chromium with the recorder attached from the first byte. |
-| Agent skill | [`skills/animation-grabber`](skills/animation-grabber) · `npx skills add shotcowboystyle/animation-grabber` | `/animation-grabber <url>` in Claude Code. |
+| Surface                    | Where                                                                                                       | What                                                              |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Chrome / Firefox extension | [`apps/extension`](apps/extension)                                                                          | Point-and-click. Extract, Reload & record, copy or download.      |
+| CLI                        | [`apps/cli`](apps/cli) · `npx animation-grabber <url>`                                                      | Headless Chromium with the recorder attached from the first byte. |
+| Agent skill                | [`skills/animation-grabber`](skills/animation-grabber) · `npx skills add shotcowboystyle/animation-grabber` | `/animation-grabber <url>` in Claude Code.                        |
 
 Marketing site: [`apps/web`](apps/web). Brand assets and guidelines: [`brand/`](brand/README.md).
 
@@ -55,16 +55,16 @@ Load `apps/extension/.output/chrome-mv3` as an unpacked extension, or `.output/f
 
 `pnpm check` runs everything through turbo: `typecheck` and `test` per package, plus the repo-wide root tasks.
 
-| Task | Tool |
-| --- | --- |
-| `typecheck` | `tsc --noEmit` in each package |
-| `test` | vitest (core: jsdom + real GSAP; cli: option parsing) |
-| `lint` | ultracite → oxlint (+ `eslint-plugin-github`, `eslint-plugin-sonarjs`, `oxlint-plugin-react-doctor` as JS plugins) |
-| `format` | ultracite → oxfmt |
-| `dead-code` | fallow |
-| `spell` | cspell |
-| `lint:md` / `lint:yaml` / `lint:actions` | markdownlint-cli2 / yamllint / actionlint |
-| `secrets` | betterleaks |
+| Task                                     | Tool                                                                                                               |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `typecheck`                              | `tsc --noEmit` in each package                                                                                     |
+| `test`                                   | vitest (core: jsdom + real GSAP; cli: option parsing)                                                              |
+| `lint`                                   | ultracite → oxlint (+ `eslint-plugin-github`, `eslint-plugin-sonarjs`, `oxlint-plugin-react-doctor` as JS plugins) |
+| `format`                                 | ultracite → oxfmt                                                                                                  |
+| `dead-code`                              | fallow                                                                                                             |
+| `spell`                                  | cspell                                                                                                             |
+| `lint:md` / `lint:yaml` / `lint:actions` | markdownlint-cli2 / yamllint / actionlint                                                                          |
+| `secrets`                                | betterleaks                                                                                                        |
 
 `pnpm turbo run lint:webext` runs Mozilla's `web-ext lint` against the Firefox build; `pnpm --filter @animation-grabber/extension react-doctor` gives the full React Doctor audit. Git hooks live in `betterhook.toml`.
 

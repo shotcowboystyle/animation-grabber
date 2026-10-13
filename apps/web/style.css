@@ -7,9 +7,9 @@
   --paper: #fffdf5;
   --ink: var(--indigo);
   --line: color-mix(in srgb, var(--indigo) 16%, transparent);
-  --display: "Bagel Fat One", "Figtree", system-ui, sans-serif;
-  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display: 'Bagel Fat One', 'Figtree', system-ui, sans-serif;
+  --body: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --radius: 18px;
   --gutter: clamp(16px, 5vw, 64px);
 }

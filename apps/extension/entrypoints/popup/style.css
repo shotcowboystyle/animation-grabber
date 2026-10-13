@@ -8,7 +8,7 @@
   --paper-2: #fff4c2;
   --line: color-mix(in srgb, var(--indigo) 18%, transparent);
   color-scheme: light dark;
-  font-family: Figtree, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 13px;
   color: var(--ink);
   background: var(--paper);
@@ -89,7 +89,7 @@ button:disabled {
   cursor: default;
 }
 
-button[aria-pressed="true"] {
+button[aria-pressed='true'] {
   background: var(--bubblegum);
   border-color: var(--bubblegum);
   color: white;
@@ -113,7 +113,7 @@ pre {
   border-radius: 10px;
   border: 1.5px solid var(--line);
   background: color-mix(in srgb, var(--indigo) 6%, transparent);
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 12px;
   line-height: 1.45;
 }

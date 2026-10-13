@@ -20,7 +20,7 @@ export const recordGsapInPage = () => {
   }
 
   const keepFinishedTweens = (gsap: unknown) => {
-    if (gsap && typeof gsap === "object" && "globalTimeline" in gsap) {
+    if (gsap && typeof gsap === 'object' && 'globalTimeline' in gsap) {
       const { globalTimeline } = gsap as GsapGlobal;
       if (globalTimeline) {
         globalTimeline.autoRemoveChildren = false;
@@ -32,7 +32,7 @@ export const recordGsapInPage = () => {
   page.__gsapExtractorRecording = true;
   let current = page.gsap;
   keepFinishedTweens(current);
-  Object.defineProperty(page, "gsap", {
+  Object.defineProperty(page, 'gsap', {
     configurable: true,
     enumerable: true,
     get: () => current,
