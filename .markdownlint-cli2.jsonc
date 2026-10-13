@@ -8,6 +8,8 @@
     "MD033": false,
   },
   "ignores": [
+    ".agents/**",
+    ".claude/**",
     "**/node_modules",
     "**/.output",
     "**/.wxt",

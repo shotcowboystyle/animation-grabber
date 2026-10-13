@@ -24,13 +24,13 @@ export type SerializedValue =
 
 export type SerializedVars = Record<string, SerializedValue>;
 
-export type AnimationMethod = "from" | "fromTo" | "set" | "timeline" | "to";
+export type AnimationMethod = 'from' | 'fromTo' | 'set' | 'timeline' | 'to';
 
 export interface ExtractedAnimation {
   delay: number;
   duration: number;
   id: string;
-  kind: "timeline" | "tween";
+  kind: 'timeline' | 'tween';
   /** Timeline labels, keyed by name. Always empty for tweens. */
   labels: Record<string, number>;
   method: AnimationMethod;

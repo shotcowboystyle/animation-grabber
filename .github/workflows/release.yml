@@ -9,7 +9,7 @@ on:
     branches: [main]
     # Web-only pushes have nothing to version or publish.
     paths-ignore:
-      - "apps/web/**"
+      - 'apps/web/**'
 
 permissions:
   contents: read
@@ -47,8 +47,8 @@ jobs:
         uses: changesets/action@v2
         with:
           version-script: pnpm changeset version
-          pr-title: "chore: release"
-          commit-message: "chore: release"
+          pr-title: 'chore: release'
+          commit-message: 'chore: release'
         env:
           # changelog-github reads PR/author info
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

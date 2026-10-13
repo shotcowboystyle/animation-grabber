@@ -12,4 +12,4 @@ rules:
     max: 120
   truthy:
     # GitHub Actions uses the `on:` key.
-    allowed-values: ["true", "false", "on"]
+    allowed-values: ['true', 'false', 'on']

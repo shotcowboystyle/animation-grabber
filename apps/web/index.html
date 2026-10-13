@@ -2,24 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Animation Grabber — Grab GSAP animations from any page</title>
     <meta
       name="description"
       content="Point at any page that uses GSAP and get its tweens, timelines and ScrollTriggers back as runnable code. Chrome extension, CLI and agent skill. Runs locally."
     />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="icon"
+      href="/favicon.svg"
+      type="image/svg+xml"
+    />
     <link
       rel="canonical"
       href="https://shotcowboystyle.github.io/projects/animation-grabber/"
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Animation Grabber" />
+    <meta
+      property="og:type"
+      content="website"
+    />
+    <meta
+      property="og:site_name"
+      content="Animation Grabber"
+    />
     <meta
       property="og:url"
       content="https://shotcowboystyle.github.io/projects/animation-grabber/"
     />
-    <meta property="og:title" content="Animation Grabber" />
+    <meta
+      property="og:title"
+      content="Animation Grabber"
+    />
     <meta
       property="og:description"
       content="Point at any page that uses GSAP. Get its GSAP back as runnable code."
@@ -28,9 +44,18 @@
       property="og:image"
       content="https://shotcowboystyle.github.io/projects/animation-grabber/og.png"
     />
-    <meta property="og:image:width" content="1400" />
-    <meta property="og:image:height" content="560" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="og:image:width"
+      content="1400"
+    />
+    <meta
+      property="og:image:height"
+      content="560"
+    />
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -58,13 +83,23 @@
         ]
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="./style.css"
+    />
     <!-- Same Umami site as the portfolio: one origin, one dashboard, split by path. -->
     <script
       defer
@@ -75,7 +110,11 @@
   </head>
   <body>
     <header class="nav">
-      <a class="nav-logo" href="#top" aria-label="Animation Grabber home">
+      <a
+        class="nav-logo"
+        href="#top"
+        aria-label="Animation Grabber home"
+      >
         <img
           src="/brand/ag-horizontal-primary.svg"
           alt="Animation Grabber"
@@ -109,9 +148,8 @@
         />
         <h1>Point at any page that uses GSAP.<br />Get its GSAP back.</h1>
         <p class="lede">
-          Animation Grabber pulls the live GSAP tweens, timelines and
-          ScrollTriggers out of a page and hands them to you, or your coding
-          agent, as runnable code.
+          Animation Grabber pulls the live GSAP tweens, timelines and ScrollTriggers out of a page
+          and hands them to you, or your coding agent, as runnable code.
         </p>
         <div class="cta">
           <a
@@ -121,7 +159,11 @@
             target="_blank"
             >Add to Chrome</a
           >
-          <a class="button button-ghost" href="#cli">Try the CLI</a>
+          <a
+            class="button button-ghost"
+            href="#cli"
+            >Try the CLI</a
+          >
         </div>
         <pre class="hero-code"><code>gsap.registerPlugin(ScrollTrigger);
 
@@ -135,67 +177,71 @@ gsap.to(".feature-card", {
 });</code></pre>
       </section>
 
-      <section class="features" aria-labelledby="why">
+      <section
+        class="features"
+        aria-labelledby="why"
+      >
         <h2 id="why">Why your agent needs this</h2>
         <ul class="grid">
           <li>
             <h3>Live state, not source</h3>
             <p>
-              Reads <code>gsap.globalTimeline</code> and
-              <code>ScrollTrigger.getAll()</code> at runtime. Real durations,
-              eases, positions and targets, not a guess from minified bundles.
+              Reads <code>gsap.globalTimeline</code> and <code>ScrollTrigger.getAll()</code> at
+              runtime. Real durations, eases, positions and targets, not a guess from minified
+              bundles.
             </p>
           </li>
           <li>
             <h3>Runnable code</h3>
             <p>
-              Rebuilds <code>gsap.to / from / fromTo / set</code>, timelines
-              with labels and positions, inline
-              <code>scrollTrigger</code> configs and
+              Rebuilds <code>gsap.to / from / fromTo / set</code>, timelines with labels and
+              positions, inline <code>scrollTrigger</code> configs and
               <code>ScrollTrigger.create</code> calls.
             </p>
           </li>
           <li>
             <h3>Three ways to grab</h3>
             <p>
-              Chrome extension for point-and-click, a CLI for scripts and CI,
-              and an agent skill for one-slash-command handoffs.
+              Chrome extension for point-and-click, a CLI for scripts and CI, and an agent skill for
+              one-slash-command handoffs.
             </p>
           </li>
           <li>
             <h3>Catches intro animations</h3>
             <p>
               GSAP forgets finished tweens. Reload &amp; record flips
-              <code>autoRemoveChildren</code> before the first frame so
-              load-time animations survive.
+              <code>autoRemoveChildren</code> before the first frame so load-time animations
+              survive.
             </p>
           </li>
           <li>
             <h3>Local only</h3>
             <p>
-              Everything runs in your browser or on your machine. No server, no
-              account, no data leaves your device.
+              Everything runs in your browser or on your machine. No server, no account, no data
+              leaves your device.
             </p>
           </li>
           <li>
             <h3>Structured for agents</h3>
             <p>
-              JSON with CSS selectors, serialized <code>vars</code>,
-              parent-child timeline structure and trigger links an agent can
-              parse without ambiguity.
+              JSON with CSS selectors, serialized <code>vars</code>, parent-child timeline structure
+              and trigger links an agent can parse without ambiguity.
             </p>
           </li>
         </ul>
       </section>
 
-      <section class="product" id="extension" aria-labelledby="extension-title">
+      <section
+        class="product"
+        id="extension"
+        aria-labelledby="extension-title"
+      >
         <div class="product-copy">
           <p class="eyebrow">Chrome extension</p>
           <h2 id="extension-title">Open, grab, paste.</h2>
           <p>
             Works on any page that exposes <code>window.gsap</code>. Needs only
-            <code>activeTab</code>; host access is requested per site, only when
-            you record.
+            <code>activeTab</code>; host access is requested per site, only when you record.
           </p>
           <a
             class="button button-primary"
@@ -209,34 +255,38 @@ gsap.to(".feature-card", {
           <li>
             <strong>Extract</strong>
             <span
-              >Click the toolbar icon on a live page. Tweens, timelines and
-              ScrollTriggers are listed instantly.</span
+              >Click the toolbar icon on a live page. Tweens, timelines and ScrollTriggers are
+              listed instantly.</span
             >
           </li>
           <li>
             <strong>Reload &amp; record</strong>
             <span
-              >Missing the intro? Record reloads the page with a recorder
-              attached so load-time animations are kept.</span
+              >Missing the intro? Record reloads the page with a recorder attached so load-time
+              animations are kept.</span
             >
           </li>
           <li>
             <strong>Copy</strong>
             <span
-              >Switch between Code, JSON and the page's own GSAP source
-              snippets. Copy or download.</span
+              >Switch between Code, JSON and the page's own GSAP source snippets. Copy or
+              download.</span
             >
           </li>
         </ol>
       </section>
 
-      <section class="product" id="cli" aria-labelledby="cli-title">
+      <section
+        class="product"
+        id="cli"
+        aria-labelledby="cli-title"
+      >
         <div class="product-copy">
           <p class="eyebrow">CLI</p>
           <h2 id="cli-title">URL in, GSAP out.</h2>
           <p>
-            Runs a headless Chromium with the recorder attached from the first
-            byte, then prints code, JSON or source snippets to stdout.
+            Runs a headless Chromium with the recorder attached from the first byte, then prints
+            code, JSON or source snippets to stdout.
           </p>
           <a
             class="button button-ghost"
@@ -283,13 +333,17 @@ gsap.to(".feature-card", {
         </div>
       </section>
 
-      <section class="product" id="skill" aria-labelledby="skill-title">
+      <section
+        class="product"
+        id="skill"
+        aria-labelledby="skill-title"
+      >
         <div class="product-copy">
           <p class="eyebrow">Agent skill</p>
           <h2 id="skill-title">One slash command.</h2>
           <p>
-            Give Claude Code (or any agent that reads <code>SKILL.md</code>) a
-            URL. It grabs the animations and rebuilds them in your project.
+            Give Claude Code (or any agent that reads <code>SKILL.md</code>) a URL. It grabs the
+            animations and rebuilds them in your project.
           </p>
           <a
             class="button button-ghost"
@@ -325,84 +379,77 @@ gsap.to(".feature-card", {
         </div>
       </section>
 
-      <section class="faq" id="faq" aria-labelledby="faq-title">
+      <section
+        class="faq"
+        id="faq"
+        aria-labelledby="faq-title"
+      >
         <h2 id="faq-title">FAQ</h2>
         <div class="faq-list">
           <details>
             <summary>How do I copy a GSAP animation from a website?</summary>
             <p>
-              Open the page and click the Animation Grabber toolbar icon. It
-              lists the page's live tweens, timelines and ScrollTriggers, which
-              you can copy as GSAP code, as JSON, or as the page's own GSAP
-              snippets. From a terminal, run
+              Open the page and click the Animation Grabber toolbar icon. It lists the page's live
+              tweens, timelines and ScrollTriggers, which you can copy as GSAP code, as JSON, or as
+              the page's own GSAP snippets. From a terminal, run
               <code>npx animation-grabber &lt;url&gt;</code>.
             </p>
           </details>
           <details>
             <summary>Does it work on Webflow sites?</summary>
             <p>
-              Yes. It reads Webflow's built-in GSAP interactions, and any site
-              that loads GSAP from a script tag or a CDN. Webflow's older IX2
-              interaction engine isn't GSAP, so those animations can't be read.
+              Yes. It reads Webflow's built-in GSAP interactions, and any site that loads GSAP from
+              a script tag or a CDN. Webflow's older IX2 interaction engine isn't GSAP, so those
+              animations can't be read.
             </p>
           </details>
           <details>
             <summary>Does it work in Firefox?</summary>
             <p>
-              A Firefox version is waiting for review on Mozilla's add-on store.
-              Until it's approved, use the Chrome extension or the CLI.
+              A Firefox version is waiting for review on Mozilla's add-on store. Until it's
+              approved, use the Chrome extension or the CLI.
             </p>
           </details>
           <details>
-            <summary>
-              Why does it say <code>window.gsap is not defined</code>?
-            </summary>
+            <summary>Why does it say <code>window.gsap is not defined</code>?</summary>
             <p>
-              The site either bundles GSAP inside its own JavaScript build
-              (Vite, webpack) or doesn't use GSAP. A bundled copy can't be read
-              live, but the Scripts view still lists any GSAP calls found in the
-              page's script files. The CLI does the same with
+              The site either bundles GSAP inside its own JavaScript build (Vite, webpack) or
+              doesn't use GSAP. A bundled copy can't be read live, but the Scripts view still lists
+              any GSAP calls found in the page's script files. The CLI does the same with
               <code>--format scripts</code>.
             </p>
           </details>
           <details>
             <summary>Why are the page's intro animations missing?</summary>
             <p>
-              GSAP discards animations once they finish, so a load-time intro is
-              gone by the time you click. Use Reload &amp; record: it reloads
-              the page with a recorder attached so those animations are kept.
-              The CLI records automatically.
+              GSAP discards animations once they finish, so a load-time intro is gone by the time
+              you click. Use Reload &amp; record: it reloads the page with a recorder attached so
+              those animations are kept. The CLI records automatically.
             </p>
           </details>
           <details>
             <summary>Why did it find GSAP but zero animations?</summary>
             <p>
-              The page probably creates its animations only after a hover, click
-              or scroll. In the extension, trigger the interaction first, then
-              extract. In the CLI, <code>--wait 3000</code> gives the page more
-              time, but it doesn't scroll or click for you.
+              The page probably creates its animations only after a hover, click or scroll. In the
+              extension, trigger the interaction first, then extract. In the CLI,
+              <code>--wait 3000</code> gives the page more time, but it doesn't scroll or click for
+              you.
             </p>
           </details>
           <details>
-            <summary>
-              How is this different from reading the site's source?
-            </summary>
+            <summary>How is this different from reading the site's source?</summary>
             <p>
-              Source is usually minified, and parts of it may be generated at
-              runtime. Animation Grabber reads what GSAP is actually running:
-              the final durations, eases, positions, targets and ScrollTrigger
-              start and end points.
+              Source is usually minified, and parts of it may be generated at runtime. Animation
+              Grabber reads what GSAP is actually running: the final durations, eases, positions,
+              targets and ScrollTrigger start and end points.
             </p>
           </details>
           <details>
-            <summary>
-              Can I reuse animations I grab from someone else's site?
-            </summary>
+            <summary>Can I reuse animations I grab from someone else's site?</summary>
             <p>
-              Treat the output as a reference for learning how something was
-              built. The motion design belongs to whoever made the site, so
-              check their terms before shipping a copy. Animation Grabber is not
-              affiliated with GreenSock.
+              Treat the output as a reference for learning how something was built. The motion
+              design belongs to whoever made the site, so check their terms before shipping a copy.
+              Animation Grabber is not affiliated with GreenSock.
             </p>
           </details>
         </div>
@@ -411,59 +458,54 @@ gsap.to(".feature-card", {
         <ul class="limits">
           <li>
             <strong>GSAP must be exposed as <code>window.gsap</code>.</strong>
-            A copy bundled privately into the site's code can't be read live;
-            only its source snippets are available.
+            A copy bundled privately into the site's code can't be read live; only its source
+            snippets are available.
           </li>
           <li>
-            <strong>Only GSAP.</strong> CSS animations, Lottie and Webflow IX2
-            aren't captured.
+            <strong>Only GSAP.</strong> CSS animations, Lottie and Webflow IX2 aren't captured.
           </li>
           <li>
-            <strong>Only the current screen size.</strong> Capture reflects the
-            viewport at that moment (the CLI uses the headless browser's default
-            size). Breakpoint-specific animations from
-            <code>gsap.matchMedia</code> aren't rebuilt as responsive code.
+            <strong>Only the current screen size.</strong> Capture reflects the viewport at that
+            moment (the CLI uses the headless browser's default size). Breakpoint-specific
+            animations from <code>gsap.matchMedia</code> aren't rebuilt as responsive code.
+          </li>
+          <li><strong>Only the top-level page.</strong> GSAP running inside iframes isn't read.</li>
+          <li>
+            <strong>No logins or interactions in the CLI.</strong> It opens a fresh browser with no
+            cookies and doesn't scroll, click or sign in. Pages behind a login, or animated only on
+            interaction, come back partial.
           </li>
           <li>
-            <strong>Only the top-level page.</strong> GSAP running inside
-            iframes isn't read.
+            <strong>Callbacks may need rework.</strong> Functions such as <code>onUpdate</code> or
+            function-based values are copied as source text, up to 2,000 characters. Anything that
+            relies on the original page's variables won't run as-is.
           </li>
           <li>
-            <strong>No logins or interactions in the CLI.</strong> It opens a
-            fresh browser with no cookies and doesn't scroll, click or sign in.
-            Pages behind a login, or animated only on interaction, come back
-            partial.
+            <strong>Selectors describe the source page.</strong> The generated CSS selectors match
+            that page's markup; map them onto yours.
           </li>
           <li>
-            <strong>Callbacks may need rework.</strong> Functions such as
-            <code>onUpdate</code> or function-based values are copied as source
-            text, up to 2,000 characters. Anything that relies on the original
-            page's variables won't run as-is.
+            <strong>Some scripts can't be read.</strong> Files the browser blocks from cross-site
+            fetching appear in the Scripts view with an error instead of their contents.
           </li>
           <li>
-            <strong>Selectors describe the source page.</strong> The generated
-            CSS selectors match that page's markup; map them onto yours.
-          </li>
-          <li>
-            <strong>Some scripts can't be read.</strong> Files the browser
-            blocks from cross-site fetching appear in the Scripts view with an
-            error instead of their contents.
-          </li>
-          <li>
-            <strong>Very large pages are capped.</strong> Extraction stops at
-            2,000 animations and shows a warning.
+            <strong>Very large pages are capped.</strong> Extraction stops at 2,000 animations and
+            shows a warning.
           </li>
         </ul>
       </section>
 
-      <section class="privacy" id="privacy" aria-labelledby="privacy-title">
+      <section
+        class="privacy"
+        id="privacy"
+        aria-labelledby="privacy-title"
+      >
         <h2 id="privacy-title">Privacy</h2>
         <p>
-          Animation Grabber runs entirely on your device. The extension reads
-          the current tab only when you click Extract, asks for access to a site
-          only when you choose Reload &amp; record, and never sends page
-          content, URLs or usage data anywhere. The CLI and skill do the same
-          from your machine.
+          Animation Grabber runs entirely on your device. The extension reads the current tab only
+          when you click Extract, asks for access to a site only when you choose Reload &amp;
+          record, and never sends page content, URLs or usage data anywhere. The CLI and skill do
+          the same from your machine.
         </p>
       </section>
     </main>
@@ -496,6 +538,9 @@ gsap.to(".feature-card", {
       </p>
     </footer>
 
-    <script type="module" src="./main.js"></script>
+    <script
+      type="module"
+      src="./main.js"
+    ></script>
   </body>
 </html>

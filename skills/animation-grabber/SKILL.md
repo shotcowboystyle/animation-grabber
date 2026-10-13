@@ -51,14 +51,14 @@ If no URL is given, ask the user for one.
 
 ## Options
 
-| Flag | Effect |
-| --- | --- |
-| `-f, --format <code\|json\|scripts>` | Output format (default `code`) |
-| `-o, --out <file>` | Write to a file instead of stdout |
-| `-w, --wait <ms>` | Extra settle time after load (default 750) |
-| `--no-record` | Skip the load-time recorder |
-| `--no-scripts` | Do not fetch and scan external scripts |
-| `--headed` | Show the browser window |
+| Flag                                 | Effect                                     |
+| ------------------------------------ | ------------------------------------------ |
+| `-f, --format <code\|json\|scripts>` | Output format (default `code`)             |
+| `-o, --out <file>`                   | Write to a file instead of stdout          |
+| `-w, --wait <ms>`                    | Extra settle time after load (default 750) |
+| `--no-record`                        | Skip the load-time recorder                |
+| `--no-scripts`                       | Do not fetch and scan external scripts     |
+| `--headed`                           | Show the browser window                    |
 
 ## Requirements
 

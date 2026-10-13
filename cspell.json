@@ -4,6 +4,8 @@
   "language": "en",
   "dictionaries": ["typescript", "node", "npm", "html", "css", "softwareTerms"],
   "ignorePaths": [
+    ".agents/**",
+    ".claude/**",
     "node_modules",
     "dist",
     "brand",
@@ -15,6 +17,7 @@
     ".fallow",
     "coverage",
     "pnpm-lock.yaml",
+    "skills-lock.json",
     ".git",
     "AGENTS.md"
   ],
