@@ -15,6 +15,7 @@
     "**/.wxt",
     "**/coverage",
     "**/dist",
+    "**/CHANGELOG.md",
     "AGENTS.md",
     // Changesets start with YAML front matter, not a heading.
     ".changeset/*.md",

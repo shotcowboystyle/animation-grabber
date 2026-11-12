@@ -19,7 +19,8 @@
     "pnpm-lock.yaml",
     "skills-lock.json",
     ".git",
-    "AGENTS.md"
+    "AGENTS.md",
+    ".changeset/*.md"
   ],
   "words": [
     "actionlint",
