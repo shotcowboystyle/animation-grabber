@@ -1,6 +1,6 @@
 {
   "name": "@animation-grabber/core",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "private": true,
   "description": "In-page GSAP extractor, recorder and code generator shared by the extension and CLI",
   "type": "module",
