@@ -20,7 +20,8 @@
     "skills-lock.json",
     ".git",
     "AGENTS.md",
-    ".changeset/*.md"
+    ".changeset/*.md",
+    "**/CHANGELOG.md"
   ],
   "words": [
     "actionlint",
