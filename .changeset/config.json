@@ -8,7 +8,7 @@
   ],
   "commit": false,
   "ignore": [],
-  "fixed": [],
+  "fixed": [["animation-grabber", "@animation-grabber/*"]],
   "linked": [],
   "updateInternalDependencies": "patch",
   "privatePackages": { "version": true, "tag": false }
