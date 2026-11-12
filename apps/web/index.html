@@ -46,15 +46,23 @@
     />
     <meta
       property="og:image:width"
-      content="1400"
+      content="1200"
     />
     <meta
       property="og:image:height"
-      content="560"
+      content="630"
+    />
+    <meta
+      property="og:image:alt"
+      content="Animation Grabber logo: a claw grabbing a pink ball, beside the name"
     />
     <meta
       name="twitter:card"
       content="summary_large_image"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Animation Grabber logo: a claw grabbing a pink ball, beside the name"
     />
     <script type="application/ld+json">
       {
@@ -66,14 +74,15 @@
         "image": "https://shotcowboystyle.github.io/projects/animation-grabber/og.png",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Chrome, macOS, Linux, Windows",
-        "softwareVersion": "0.2.0",
+        "softwareVersion": "%VITE_APP_VERSION%",
         "license": "https://opensource.org/licenses/MIT",
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "downloadUrl": "https://chromewebstore.google.com/detail/animation-grabber/gjbjbopalknppknbeenhcgjahohigoal",
         "author": {
           "@type": "Person",
-          "name": "shotcowboystyle",
+          "@id": "https://shotcowboystyle.github.io/#person",
+          "name": "Curtis Blanton",
           "url": "https://shotcowboystyle.github.io/"
         },
         "sameAs": [
@@ -543,13 +552,8 @@ gsap.to(".feature-card", {
       </div>
       <p>
         Crafted by
-        <a
-          href="https://github.com/shotcowboystyle"
-          rel="noopener"
-          target="_blank"
-          >shotcowboystyle</a
-        >
-        · v0.2.0 · not affiliated with GreenSock
+        <a href="https://shotcowboystyle.github.io/">Curtis Blanton</a>
+        · v%VITE_APP_VERSION% · not affiliated with GreenSock
       </p>
     </footer>
 

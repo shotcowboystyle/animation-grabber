@@ -8,7 +8,7 @@ version = 1
 parallel = true
 
 [hooks.pre-commit.jobs.format]
-run = "pnpm exec oxfmt --check {staged_files}"
+run = "pnpm exec oxfmt --check --no-error-on-unmatched-pattern {staged_files}"
 fix = "pnpm exec oxfmt {files}"
 glob = [
   "*.ts",
@@ -22,6 +22,7 @@ glob = [
   "*.md",
   "*.yml",
   "*.yaml",
+  "*.toml",
 ]
 reads = ["**/*"]
 writes = []
@@ -37,7 +38,19 @@ concurrent_safe = true
 
 [hooks.pre-commit.jobs.spell]
 run = "pnpm exec cspell --no-progress {staged_files}"
-glob = ["*.ts", "*.tsx", "*.md", "*.json", "*.jsonc", "*.yml", "*.yaml", "*.toml"]
+glob = [
+  "*.ts",
+  "*.tsx",
+  "*.js",
+  "*.html",
+  "*.css",
+  "*.md",
+  "*.json",
+  "*.jsonc",
+  "*.yml",
+  "*.yaml",
+  "*.toml",
+]
 reads = ["**/*", "cspell.json"]
 writes = []
 concurrent_safe = true
