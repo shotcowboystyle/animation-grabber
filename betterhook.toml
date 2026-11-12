@@ -8,7 +8,7 @@ version = 1
 parallel = true
 
 [hooks.pre-commit.jobs.format]
-run = "pnpm exec oxfmt --check {staged_files}"
+run = "pnpm exec oxfmt --check --no-error-on-unmatched-pattern {staged_files}"
 fix = "pnpm exec oxfmt {files}"
 glob = [
   "*.ts",
